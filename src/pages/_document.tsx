@@ -1,7 +1,6 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/document";
 // PLUGINS
 import { ServerStyleSheet } from "styled-components";
-// TYPES
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
