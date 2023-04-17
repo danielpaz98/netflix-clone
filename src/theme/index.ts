@@ -10,8 +10,12 @@ export const theme = {
   },
   colors: {
     brand: "#e50914",
-    white: "#fff",
-    black: "#000",
+    white: "#ffffff",
+    black: "#000000",
+    "suva-grey": "#8c8c8c",
+    warning: "#e87c03",
+    error: "#b92d2b",
+    success: "#5fa53f",
   },
 } as const;
 
