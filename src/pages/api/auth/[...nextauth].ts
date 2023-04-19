@@ -1,4 +1,4 @@
-import NextAuth, { AuthOptions, Session } from "next-auth";
+import NextAuth, { type AuthOptions, type Session } from "next-auth";
 // PROVIDERS
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
