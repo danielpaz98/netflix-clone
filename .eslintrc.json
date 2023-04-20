@@ -53,6 +53,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/no-unsafe-assignment": "off",
+    "import/no-named-as-default": "off",
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
