@@ -43,3 +43,7 @@ body {
 body, html, #__next {
 	height: 100%;
 }
+
+.pointer-events-none {
+	pointer-events: none;
+}
