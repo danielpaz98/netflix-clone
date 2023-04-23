@@ -48,8 +48,8 @@ export const authOptions: AuthOptions = {
           const user = omit(dbUser, ["createAt", "updatedAt", "emailVerified", "hashedPassword"]);
 
           return user;
-        } catch (error) {
-          console.error(error);
+        } catch (err) {
+          console.error(err);
         }
 
         return null;
