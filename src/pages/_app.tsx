@@ -9,11 +9,12 @@ import "~/global.css";
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppPropsWithLayout) {
   const getLayout = Component?.layout ?? ((page) => page);
+  const pageTitle = Component.title ?? "Netflix";
 
   return (
     <ThemeProvider theme={theme}>
       <Head>
-        <title>{Component.title}</title>
+        <title>{pageTitle}</title>
       </Head>
 
       <SessionProvider session={session}>{getLayout(<Component {...pageProps} />)}</SessionProvider>
