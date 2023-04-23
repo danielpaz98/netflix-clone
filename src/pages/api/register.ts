@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const existingUser = await prismadb.user.findUnique({ where: { email } });
 
-    if (existingUser) return res.status(422).json({ error: "Email taken" });
+    if (existingUser) return res.status(422).json({ message: "Email taken" });
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
