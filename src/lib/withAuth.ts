@@ -9,7 +9,7 @@ type Gssp = (ctx: GetServerSidePropsContext) => Promise<GsspResult> | GsspResult
 function withAuth(gssp: Gssp, { redirect }: { redirect?: Redirect } = {}) {
   return async (ctx: GetServerSidePropsContext) => {
     const { user } = (await getSession(ctx)) || {};
-    const redirectTo = { redirect: redirect ?? { permanent: false, destination: "/auth" } };
+    const redirectTo = { redirect: redirect ?? { permanent: false, destination: "/auth/signin" } };
 
     if (!user) return redirectTo;
 
