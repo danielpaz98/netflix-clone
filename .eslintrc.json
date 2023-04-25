@@ -47,6 +47,7 @@
     "prefer-const": "warn",
     "no-dupe-keys": "warn",
     "array-callback-return": "warn",
+    "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/self-closing-comp": "warn",
     "react/no-unknown-property": "warn",
@@ -67,6 +68,15 @@
       {
         "checksVoidReturn": {
           "attributes": false
+        }
+      }
+    ],
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "extendDefaults": true,
+        "types": {
+          "{}": false
         }
       }
     ],
