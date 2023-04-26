@@ -1,7 +1,7 @@
 // PLUGINS
 import { useFormContext } from "react-hook-form";
 // STYLES
-import Styles from "./styles";
+import Styles from "./styles.css";
 // COMPONENTS
 import Input, { Props as InputProps } from "~/components/Input";
 import ErrorMessage from "~/components/ErrorMessage";

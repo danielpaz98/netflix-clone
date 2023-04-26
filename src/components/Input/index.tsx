@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 // STYLES
-import Styles from "./styles";
+import Styles from "./styles.css";
 
 export enum ErrorType {
   success = "success",

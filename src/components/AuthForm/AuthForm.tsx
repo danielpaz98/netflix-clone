@@ -2,7 +2,7 @@ import { forwardRef, useImperativeHandle } from "react";
 // PLUGINS
 import { FormProvider, useForm } from "react-hook-form";
 // STYLES
-import Styles from "./styles";
+import Styles from "./styles.css";
 // TYPES
 import type { SubmitHandler, SubmitErrorHandler, UseFormProps, UseFormReturn, FieldValues } from "react-hook-form";
 

@@ -1,7 +1,7 @@
 // PLUGINS
 import Image from "next/image";
 // STYLES
-import Styles from "./styles";
+import Styles from "./styles.css";
 // IMAGES
 import BackgroundImage from "~/images/jpg/hero.jpg";
 

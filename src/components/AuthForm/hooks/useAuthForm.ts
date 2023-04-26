@@ -34,7 +34,7 @@ export default function useAuthForm<TFieldValues extends FieldValues>() {
         const res = await signIn("credentials", { ...data, redirect: false });
 
         if (res?.ok) {
-          void router.push("/");
+          void router.push("/profile");
         } else {
           setError("password", { type: "server", message: "Incorrect email or password." });
         }

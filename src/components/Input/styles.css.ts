@@ -29,7 +29,7 @@ const Styles = {
       `}
   `,
   Label: styled.label<{ floatLabel: boolean }>`
-    font-size: 1rem;
+    font-size: ${({ theme }) => theme.fontSize.base};
     align-self: flex-start;
 
     ${({ floatLabel }) =>
@@ -50,7 +50,7 @@ const Styles = {
     width: 100%;
     height: 3.125rem;
     background-color: ${({ theme }) => theme.colors.night_rider};
-    font-size: 1rem;
+    font-size: ${({ theme }) => theme.fontSize.base};
     color: ${({ theme }) => theme.colors.white};
     border-radius: 4px;
     padding: 1rem 1.25rem 0;
@@ -68,7 +68,7 @@ const Styles = {
 
             &:focus + label,
             &:not(:placeholder-shown) + label {
-              font-size: 0.75rem;
+              font-size: ${({ theme }) => theme.fontSize.xs};
               top: 0.75rem;
             }
           `

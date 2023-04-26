@@ -5,7 +5,7 @@ const Styles = {
     border: none;
     cursor: pointer;
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: ${({ theme }) => theme.fontSize.base};
     font-weight: 700;
     padding: 1rem;
     margin-top: 1.5rem;

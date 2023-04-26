@@ -1,5 +1,5 @@
 // STYLES
-import Styles from "./styles";
+import Styles from "./styles.css";
 
 export type Props = {
   className?: string;
