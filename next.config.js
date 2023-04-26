@@ -4,8 +4,15 @@ const path = require("path");
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  pageExtensions:
+    process.env.NODE_ENV !== "development"
+      ? ["(?<!(css).*)tsx?"] // all ts + tsx pages except when `(css)` is in the path
+      : ["tsx?"], // all ts + tsx pages
   compiler: {
     styledComponents: true,
+  },
+  images: {
+    domains: ["avatars.githubusercontent.com"],
   },
   webpack: (config) => {
     // Grab the existing rule that handles SVG imports
