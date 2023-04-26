@@ -13,6 +13,13 @@ const nextConfig = {
   },
   images: {
     domains: ["avatars.githubusercontent.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*.googleusercontent.com",
+        pathname: "**",
+      },
+    ],
   },
   webpack: (config) => {
     // Grab the existing rule that handles SVG imports
