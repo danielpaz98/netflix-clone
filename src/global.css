@@ -44,6 +44,28 @@ body, html, #__next {
 	height: 100%;
 }
 
+button {
+	cursor: pointer;
+	border: none;
+	margin: 0;
+	padding: 0;
+	width: auto;
+	overflow: visible;
+	background: none;
+	color: inherit;
+	font: inherit;
+	line-height: normal;
+	-webkit-font-smoothing: inherit;
+	-moz-osx-font-smoothing: inherit;
+	-webkit-appearance: none;
+}
+
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 .pointer-events-none {
 	pointer-events: none;
 }
