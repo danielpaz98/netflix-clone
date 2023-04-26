@@ -2,28 +2,25 @@
 import { getSession } from "next-auth/react";
 // TYPES
 import type { Redirect, GetServerSidePropsResult, GetServerSidePropsContext } from "next";
+import type { Session } from "next-auth";
 
 type Props = { [key: string]: unknown };
 
 type Gssp<P extends Props = Props> = (
-  ctx: GetServerSidePropsContext
+  ctx: GetServerSidePropsContext,
+  session?: Session | null
 ) => Promise<GetServerSidePropsResult<P>> | GetServerSidePropsResult<P>;
 
 function withAuth(gssp: Gssp, { redirect }: { redirect?: Redirect } = {}) {
   return async (ctx: GetServerSidePropsContext) => {
-    const { user } = (await getSession(ctx)) || {};
+    const session = await getSession(ctx);
     const redirectTo = { redirect: redirect ?? { permanent: false, destination: "/auth/signin" } };
 
-    if (!user) return redirectTo;
+    if (!session) return redirectTo;
 
-    const gsspData = (await gssp(ctx)) || {};
+    const gsspData = await gssp(ctx, session);
 
-    if (!("props" in gsspData)) throw new Error("invalid getSSP result");
-
-    const { props, ...restGssp } = gsspData;
-    const gsspReturn = { ...restGssp, props: { user, ...(props as Props) } };
-
-    return gsspReturn;
+    return gsspData;
   };
 }
 
