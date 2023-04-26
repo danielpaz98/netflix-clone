@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 // PLUGINS
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import { signIn, getSession } from "next-auth/react";
 // STYLES
-import Styles from "~/components/AuthForm/styles";
+import Styles from "~/components/AuthForm/styles.css";
 // LAYOUTS
 import { AuthLayout } from "~/layouts";
 // COMPONENTS
@@ -14,6 +14,7 @@ import GithubIcon from "~/icons/github.svg";
 import ThreeDotsIcon from "~/icons/three-dots.svg";
 // TYPES
 import type { UseFormReturn } from "react-hook-form";
+import type { GetServerSidePropsContext } from "next";
 // SCHEMAS
 import { signInSchema, type SignInSchema } from "~/components/AuthForm/schemas";
 // HOOKS
@@ -53,6 +54,23 @@ const SignInPage: NextPageWithLayout = () => {
       </Styles.MutedLink>
     </AuthForm>
   );
+};
+
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  const session = await getSession(ctx);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 };
 
 SignInPage.layout = AuthLayout;
