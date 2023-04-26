@@ -57,13 +57,16 @@ export const authOptions: AuthOptions = {
     }),
   ],
   callbacks: {
-    jwt({ token, user }) {
+    jwt({ token, user, account }) {
       if (user) token.user = user;
+      if (account?.provider === "google") token.picture = token?.picture?.split("=")[0];
 
       return token;
     },
     session({ session, token }) {
       session.user = token.user as Session["user"];
+      session.user.image = token.picture as Session["user"]["image"];
+
       return session;
     },
   },
