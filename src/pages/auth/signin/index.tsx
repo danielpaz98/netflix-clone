@@ -40,11 +40,11 @@ const SignInPage: NextPageWithLayout = () => {
       </AuthForm.Button>
 
       <AuthForm.ProviderList>
-        <AuthForm.ProviderList.Item onClick={() => signIn("google", { callbackUrl: "/" })}>
+        <AuthForm.ProviderList.Item onClick={() => signIn("google", { callbackUrl: "/profile" })}>
           <GoogleIcon height={28} width={28} />
         </AuthForm.ProviderList.Item>
 
-        <AuthForm.ProviderList.Item onClick={() => signIn("github", { callbackUrl: "/" })}>
+        <AuthForm.ProviderList.Item onClick={() => signIn("github", { callbackUrl: "/profile" })}>
           <GithubIcon height={28} width={28} />
         </AuthForm.ProviderList.Item>
       </AuthForm.ProviderList>
