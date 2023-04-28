@@ -15,13 +15,19 @@ type Props = {
 
 const ProfilePage: NextPageWithLayout<Props> = ({ user }: Props) => {
   return (
-    <Styles.Container>
-      <Styles.Title>Who is watching?</Styles.Title>
+    <>
+      <Styles.ShadedGradient />
 
-      <Styles.Link href="/">
-        <ProfilePicture image={user.image} username={user.name} />
-      </Styles.Link>
-    </Styles.Container>
+      <Styles.Container>
+        <Styles.ProfilesContainer>
+          <Styles.Title>Who&apos;s watching?</Styles.Title>
+
+          <Styles.Link href="/">
+            <ProfilePicture image={user.image} username={user.name} />
+          </Styles.Link>
+        </Styles.ProfilesContainer>
+      </Styles.Container>
+    </>
   );
 };
 
