@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Styles = {
   Container: styled.div`
-    background-color: ${({ theme }) => theme.colors.black_russian};
+    background-color: ${({ theme }) => theme.colors.nero};
     color: ${({ theme }) => theme.colors.white};
     height: 100%;
   `,
