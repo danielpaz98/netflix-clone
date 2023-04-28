@@ -3,21 +3,42 @@ import styled from "styled-components";
 const Styles = {
   Figure: styled.figure`
     display: block;
+    margin: 0;
+    max-width: 12.5rem;
+    min-width: 5.25rem;
+    width: 8.25rem;
   `,
   Picture: styled.picture`
-    display: block;
     position: relative;
-    width: 11rem;
-    height: 11rem;
-    border-radius: 6px;
-    border: 2px solid transparent;
+    display: block;
+    background-color: ${({ theme }) => theme.colors.night_rider};
+    border-radius: 4px;
     overflow: hidden;
+    height: 8.25rem;
+    width: 8.25rem;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 4px;
+      border: 2px solid transparent;
+    }
   `,
   Text: styled.figcaption`
-    text-align: center;
     text-transform: capitalize;
-    margin-top: 1rem;
     color: ${({ theme }) => theme.colors.mischka};
+    display: block;
+    line-height: 1.2em;
+    margin: 0.6em 0;
+    min-height: 1.8em;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
   `,
 };
 
