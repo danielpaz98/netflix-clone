@@ -36,7 +36,7 @@ const Styles = {
   `,
   Link: styled(Link)`
     &:hover {
-      & picture {
+      & picture::after {
         border-color: ${({ theme }) => theme.colors.white};
       }
 
