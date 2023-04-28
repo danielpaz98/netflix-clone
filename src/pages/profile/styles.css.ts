@@ -24,14 +24,26 @@ const Styles = {
   ProfilesContainer: styled.div`
     text-align: center;
     max-width: 80%;
+    animation: animate-pop 0.45s forwards;
+
+    @keyframes animate-pop {
+      from {
+        opacity: 0;
+        transform: scale(1.1);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
   `,
   Title: styled.h1`
-    font-size: ${({ theme }) => theme.fontSize["4xl"]};
-    text-align: center;
-    margin-bottom: 2.5rem;
+    font-size: ${({ theme }) => theme.fontSize["3xl"]};
+    font-weight: 400;
 
-    @media screen and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-      font-size: ${({ theme }) => theme.fontSize["6xl"]};
+    @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}) {
+      font-size: 3.5vw;
     }
   `,
   Link: styled(Link)`
