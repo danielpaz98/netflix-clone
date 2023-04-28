@@ -35,8 +35,9 @@ export default class MyDocument extends Document {
         <Head>
           <link href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico" rel="shortcut icon" />
           <link href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png" rel="apple-touch-icon" />
-          <link href="https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css" rel="stylesheet" />
+          <link href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" rel="stylesheet" />
         </Head>
+
         <body>
           <Main />
           <NextScript />
