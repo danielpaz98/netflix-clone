@@ -12,6 +12,7 @@ export const theme = {
     brand: "#e50914",
     white: "#ffffff",
     black: "#000000",
+    nero: "#141414",
     black_russian: "#18181b",
     charcoal: "#454545",
     night_rider: "#333333",
