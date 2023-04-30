@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 // PLUGINS
 import { useFormContext } from "react-hook-form";
 // STYLES
@@ -12,28 +13,36 @@ export interface Props extends InputProps {
   feedbackType?: FeedbackType | undefined;
 }
 
-const FormInput = ({ className, type, feedbackType, label, name, disabled, ...restProps }: Props) => {
-  const {
-    register,
-    formState: { isSubmitting, errors },
-  } = useFormContext();
+const FormInput = forwardRef(
+  (
+    { className, type, feedbackType, label, name, disabled, ...restProps }: Props,
+    ref?: React.Ref<HTMLInputElement>
+  ) => {
+    const {
+      register,
+      formState: { isSubmitting, errors },
+    } = useFormContext();
 
-  return (
-    <Styles.FormInputContainer className={className}>
-      <Styles.FormInput
-        disabled={isSubmitting || disabled}
-        feedbackType={feedbackType}
-        label={label}
-        type={type}
-        {...(name && { ...register(name) })}
-        {...restProps}
-      />
+    return (
+      <Styles.FormInputContainer className={className}>
+        <Styles.FormInput
+          ref={ref}
+          disabled={isSubmitting || disabled}
+          feedbackType={feedbackType}
+          label={label}
+          type={type}
+          {...(name && { ...register(name) })}
+          {...restProps}
+        />
 
-      {errors?.[name as string] && (
-        <FeedbackMessage feedbackType={feedbackType} text={errors?.[name as string]?.message as string} />
-      )}
-    </Styles.FormInputContainer>
-  );
-};
+        {errors?.[name as string] && (
+          <FeedbackMessage feedbackType={feedbackType} text={errors?.[name as string]?.message as string} />
+        )}
+      </Styles.FormInputContainer>
+    );
+  }
+);
+
+FormInput.displayName = "FormInput";
 
 export default FormInput;
