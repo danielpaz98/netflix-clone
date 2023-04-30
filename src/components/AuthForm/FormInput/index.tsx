@@ -3,29 +3,36 @@ import { useFormContext } from "react-hook-form";
 // STYLES
 import Styles from "./styles.css";
 // COMPONENTS
-import Input, { Props as InputProps } from "~/components/Input";
-import ErrorMessage from "~/components/ErrorMessage";
+import FeedbackMessage from "~/components/FeedbackMessage";
+// TYPES
+import type { Props as InputProps } from "~/components/Input";
+import type { FeedbackType } from "~/components/FeedbackMessage";
 
-export type Props = InputProps;
+export interface Props extends InputProps {
+  feedbackType?: FeedbackType | undefined;
+}
 
-const FormInput = ({ className, type, label, name, disabled, ...restProps }: Props) => {
+const FormInput = ({ className, type, feedbackType, label, name, disabled, ...restProps }: Props) => {
   const {
     register,
     formState: { isSubmitting, errors },
   } = useFormContext();
 
   return (
-    <Styles.FormInput className={className}>
-      <Input
+    <Styles.FormInputContainer className={className}>
+      <Styles.FormInput
         disabled={isSubmitting || disabled}
+        feedbackType={feedbackType}
         label={label}
         type={type}
-        {...register(name as string)}
+        {...(name && { ...register(name) })}
         {...restProps}
       />
 
-      {errors?.[name as string] && <ErrorMessage text={errors?.[name as string]?.message as string} />}
-    </Styles.FormInput>
+      {errors?.[name as string] && (
+        <FeedbackMessage feedbackType={feedbackType} text={errors?.[name as string]?.message as string} />
+      )}
+    </Styles.FormInputContainer>
   );
 };
 
