@@ -23,24 +23,42 @@ const SignUpPage: NextPageWithLayout = () => {
   const formRef = useRef<UseFormReturn<SignUpSchema>>(null);
 
   useEffect(() => {
-    if (errors) formRef.current?.setError(...errors);
+    if (errors) {
+      Object.entries(errors).forEach(([k, v]) => formRef.current?.setError(k as keyof typeof errors, v));
+    }
   }, [errors]);
 
   return (
     <AuthForm ref={formRef} mode="onChange" resolver={signUpSchema} onSubmit={register}>
-      <AuthForm.Title>Sign Up</AuthForm.Title>
+      {({ formState: { errors: err } }) => (
+        <>
+          <AuthForm.Title>Sign Up</AuthForm.Title>
 
-      <AuthForm.Input label="Username" name="name" type="text" />
-      <AuthForm.Input label="Email" name="email" type="text" />
-      <AuthForm.Input label="Password" name="password" type="password" />
+          <AuthForm.Input feedbackType={err.name && "warning"} label="Username" name="name" type="text" />
 
-      <AuthForm.Button disabled={isLoading} type="submit">
-        {isLoading ? <ThreeDotsIcon height={14} /> : <span>Register</span>}
-      </AuthForm.Button>
+          <AuthForm.Input
+            feedbackType={err?.email && (err?.email?.type !== "server" ? "warning" : "error")}
+            label="Email"
+            name="email"
+            type="text"
+          />
 
-      <Styles.MutedLink>
-        <span>Already have an account?</span> <Link href="/auth/signin">Login.</Link>
-      </Styles.MutedLink>
+          <AuthForm.Input
+            feedbackType={err.password && "warning"}
+            label="Password"
+            name="password"
+            type="password"
+          />
+
+          <AuthForm.Button disabled={isLoading} type="submit">
+            {isLoading ? <ThreeDotsIcon height={14} /> : <span>Register</span>}
+          </AuthForm.Button>
+
+          <Styles.MutedLink>
+            <span>Already have an account?</span> <Link href="/auth/signin">Login.</Link>
+          </Styles.MutedLink>
+        </>
+      )}
     </AuthForm>
   );
 };
