@@ -4,7 +4,13 @@ import { FormProvider, useForm } from "react-hook-form";
 // STYLES
 import Styles from "./styles.css";
 // TYPES
-import type { SubmitHandler, SubmitErrorHandler, UseFormProps, UseFormReturn, FieldValues } from "react-hook-form";
+import type {
+  SubmitHandler,
+  SubmitErrorHandler,
+  UseFormProps,
+  UseFormReturn,
+  FieldValues,
+} from "react-hook-form";
 
 export interface SignInFormState {
   name: string;
@@ -14,7 +20,7 @@ export interface SignInFormState {
 
 export interface Props<TFieldValues extends FieldValues> extends UseFormProps<TFieldValues> {
   className?: string;
-  children?: React.ReactNode;
+  children?: React.ReactNode | ((methods: UseFormReturn<TFieldValues>) => React.ReactNode);
   onSubmit?: SubmitHandler<TFieldValues>;
   onError?: SubmitErrorHandler<TFieldValues>;
 }
@@ -34,14 +40,14 @@ function AuthForm<TFieldValues extends FieldValues>(
   return (
     <FormProvider {...methods}>
       <Styles.AuthForm autoComplete="off" className={className} onSubmit={handleSubmit(onSubmit, onError)}>
-        {children}
+        {typeof children === "function" ? children(methods) : children}
       </Styles.AuthForm>
     </FormProvider>
   );
 }
 
-const AuthFormWithForwardRef = forwardRef(AuthForm) as <TFieldValues extends FieldValues>(
+const AuthFormWithRef = forwardRef(AuthForm) as <TFieldValues extends FieldValues>(
   props: Props<TFieldValues> & { ref?: AuthFormRef<TFieldValues> }
 ) => ReturnType<typeof AuthForm>;
 
-export default AuthFormWithForwardRef;
+export default AuthFormWithRef;
