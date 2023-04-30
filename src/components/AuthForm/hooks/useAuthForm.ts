@@ -5,26 +5,24 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 // TYPES
 import type { user as User } from "@prisma/client";
-import type { UseFormSetError, Path, FieldValues, ErrorOption, FieldPath } from "react-hook-form";
+import type { FieldValues, ErrorOption, FieldPath } from "react-hook-form";
 import type { SignInSchema, SignUpSchema } from "~/components/AuthForm/schemas";
 
-type ErrorState<TFieldValues extends FieldValues = FieldValues> = [
+type ErrorState<TFieldValues extends FieldValues = FieldValues> = Record<
   FieldPath<TFieldValues> | `root.${string}` | "root",
-  ErrorOption,
-  {
-    shouldFocus: boolean;
-  }?
-];
+  ErrorOption & {
+    shouldFocus?: boolean;
+  }
+>;
+
+type SetErrors<TFieldValues extends FieldValues> = (errors: ErrorState<TFieldValues>) => void;
 
 export default function useAuthForm<TFieldValues extends FieldValues>() {
   const [isLoading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState<ErrorState<TFieldValues>>();
+  const [errors, setErrorsState] = useState<ErrorState<TFieldValues>>();
   const router = useRouter();
 
-  const setError: UseFormSetError<FieldValues> = useCallback(
-    (name, error, options) => setErrors([name as Path<TFieldValues>, error, options]),
-    []
-  );
+  const setErrors: SetErrors<FieldValues> = useCallback((errs) => setErrorsState(errs), []);
 
   const login = useCallback(
     async (data: SignInSchema) => {
@@ -36,7 +34,10 @@ export default function useAuthForm<TFieldValues extends FieldValues>() {
         if (res?.ok) {
           void router.push("/profile");
         } else {
-          setError("password", { type: "server", message: "Incorrect email or password." });
+          setErrors({
+            password: { type: "server", message: "Incorrect email or password." },
+            email: { type: "server" },
+          });
         }
       } catch (err) {
         console.error(err);
@@ -44,7 +45,7 @@ export default function useAuthForm<TFieldValues extends FieldValues>() {
         setIsLoading(false);
       }
     },
-    [router, setError]
+    [router, setErrors]
   );
 
   const register = useCallback(
@@ -59,13 +60,15 @@ export default function useAuthForm<TFieldValues extends FieldValues>() {
         const error = err as AxiosError<Error>;
 
         if (error.response?.status === 422) {
-          setError("email", { type: "server", message: error?.response?.data.message });
+          setErrors({
+            email: { type: "server", message: error?.response?.data.message },
+          });
         }
       } finally {
         setIsLoading(false);
       }
     },
-    [login, setError]
+    [login, setErrors]
   );
 
   return { register, login, isLoading, errors };
