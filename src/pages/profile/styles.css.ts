@@ -7,7 +7,17 @@ const Styles = {
     position: relative;
     height: 4.25rem;
     z-index: 2;
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, transparent);
+    background-image: ${({ theme }) => theme.gradients.shaded[200]};
+  `,
+  Main: styled.main`
+    background-color: ${({ theme }) => theme.colors.nero};
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+    z-index: 0;
   `,
   Container: styled.div`
     display: flex;
@@ -20,10 +30,6 @@ const Styles = {
     right: 0;
     left: 0;
     z-index: 100;
-  `,
-  ProfilesContainer: styled.div`
-    text-align: center;
-    max-width: 80%;
     animation: animate-pop 0.45s forwards;
 
     @keyframes animate-pop {
@@ -38,7 +44,12 @@ const Styles = {
       }
     }
   `,
+  ProfilesContainer: styled.div`
+    text-align: center;
+    max-width: 80%;
+  `,
   Title: styled.h1`
+    color: ${({ theme }) => theme.colors.white};
     font-size: ${({ theme }) => theme.fontSize["3xl"]};
     font-weight: 400;
 
