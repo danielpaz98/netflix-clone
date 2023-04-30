@@ -11,6 +11,7 @@ export const theme = {
   colors: {
     brand: "#e50914",
     white: "#ffffff",
+    whisper: "#e5e5e5",
     black: "#000000",
     nero: "#141414",
     black_russian: "#18181b",
@@ -37,6 +38,12 @@ export const theme = {
     "7xl": "4.5rem;",
     "8xl": "6rem",
     "9xl": "8rem",
+  },
+  gradients: {
+    shaded: {
+      100: "linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0, transparent)",
+      200: "linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, transparent)",
+    },
   },
 } as const;
 
