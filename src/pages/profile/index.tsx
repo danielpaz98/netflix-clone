@@ -1,5 +1,3 @@
-// LAYOUTS
-import { DefaultLayout } from "~/layouts";
 // LIBRARIES
 import { withAuth } from "~/lib";
 // STYLES
@@ -18,15 +16,17 @@ const ProfilePage: NextPageWithLayout<Props> = ({ user }: Props) => {
     <>
       <Styles.ShadedGradient />
 
-      <Styles.Container>
-        <Styles.ProfilesContainer>
-          <Styles.Title>Who&apos;s watching?</Styles.Title>
+      <Styles.Main>
+        <Styles.Container>
+          <Styles.ProfilesContainer>
+            <Styles.Title>Who&apos;s watching?</Styles.Title>
 
-          <Styles.Link href="/">
-            <ProfilePicture image={user.image} username={user.name} />
-          </Styles.Link>
-        </Styles.ProfilesContainer>
-      </Styles.Container>
+            <Styles.Link href="/">
+              <ProfilePicture image={user.image} username={user.name} />
+            </Styles.Link>
+          </Styles.ProfilesContainer>
+        </Styles.Container>
+      </Styles.Main>
     </>
   );
 };
@@ -39,6 +39,6 @@ export const getServerSideProps = withAuth((_, session) => {
   };
 });
 
-ProfilePage.layout = DefaultLayout;
+ProfilePage.title = "Profile - Netflix";
 
 export default ProfilePage;
