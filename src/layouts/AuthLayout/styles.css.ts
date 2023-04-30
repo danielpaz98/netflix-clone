@@ -2,7 +2,7 @@ import styled from "styled-components";
 // PLUGINS
 import Link from "next/link";
 // IMAGES
-import LogoImage from "~/images/svg/logo.svg";
+import NetflixLogo from "~/images/svg/logo.svg";
 
 const Styles = {
   Container: styled.div`
@@ -40,14 +40,14 @@ const Styles = {
     height: var(--header-height);
 
     @media screen and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0, transparent);
+      background-image: ${({ theme }) => theme.gradients.shaded[100]};
       padding-left: 3%;
     }
   `,
   HeaderLink: styled(Link)`
     color: ${({ theme }) => theme.colors.brand};
   `,
-  HeaderLogo: styled(LogoImage)`
+  HeaderLogo: styled(NetflixLogo)`
     display: inline-block;
     width: 10.5rem;
   `,
