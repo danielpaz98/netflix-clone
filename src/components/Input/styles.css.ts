@@ -1,32 +1,12 @@
 import styled, { css } from "styled-components";
-// TYPES
-import type { Props as InputProps } from "~/components/Input";
 
 const Styles = {
-  Container: styled.div<{ errorType?: InputProps["errorType"] }>`
+  Container: styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
     color: ${({ theme }) => theme.colors.suva_gray};
-
-    ${({ errorType }) =>
-      errorType &&
-      css`
-        &::after {
-          content: "";
-          display: block;
-          border-bottom: 2px solid ${({ theme }) => theme.colors[errorType]};
-          border-bottom-left-radius: 0.25rem;
-          border-bottom-right-radius: 0.25rem;
-          bottom: 0;
-          height: 6px;
-          left: 0;
-          pointer-events: none;
-          position: absolute;
-          width: 100%;
-        }
-      `}
   `,
   Label: styled.label<{ floatLabel: boolean }>`
     font-size: ${({ theme }) => theme.fontSize.base};
@@ -61,14 +41,14 @@ const Styles = {
       background-color: ${({ theme }) => theme.colors.charcoal};
     }
 
-    ${({ floatLabel }) =>
+    ${({ floatLabel, theme }) =>
       floatLabel
         ? css`
             padding: 1rem 1.25rem 0;
 
             &:focus + label,
             &:not(:placeholder-shown) + label {
-              font-size: ${({ theme }) => theme.fontSize.xs};
+              font-size: ${theme.fontSize.xs};
               top: 0.75rem;
             }
           `
