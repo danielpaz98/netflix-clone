@@ -36,7 +36,7 @@
     "prettier/prettier": [
       "error",
       {
-        "printWidth": 120,
+        "printWidth": 110,
         "bracketSameLine": true,
         "endOfLine": "auto"
       }
