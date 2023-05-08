@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 
 const Styles = {
   Figure: styled.figure`
@@ -8,7 +9,7 @@ const Styles = {
     height: 8.25rem;
     width: 8.25rem;
   `,
-  Picture: styled.picture`
+  Picture: styled.picture<{ onlyPicture?: boolean }>`
     position: relative;
     display: block;
     background-color: ${({ theme }) => theme.colors.night_rider};
@@ -17,17 +18,21 @@ const Styles = {
     height: 100%;
     width: 100%;
 
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      border-radius: 4px;
-      border: 2px solid transparent;
-    }
+    ${({ onlyPicture }) =>
+      onlyPicture &&
+      css`
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          border-radius: 4px;
+          border: 2px solid transparent;
+        }
+      `}
   `,
   Text: styled.figcaption`
     text-transform: capitalize;
