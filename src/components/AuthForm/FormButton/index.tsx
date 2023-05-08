@@ -1,9 +1,7 @@
 // STYLES
 import Styles from "./styles.css";
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children?: React.ReactNode;
-}
+type Props = React.ComponentProps<"button">;
 
 const FormButton = ({ className, children, ...restProps }: Props) => {
   return (
