@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 // STYLES
 import Styles from "./styles.css";
 
-export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface Props extends React.ComponentProps<"input"> {
   label: string;
 }
 
