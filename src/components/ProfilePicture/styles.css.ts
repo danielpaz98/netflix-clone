@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const Styles = {
   Figure: styled.figure`
     display: block;
     margin: 0;
     max-width: 12.5rem;
-    min-width: 5.25rem;
+    height: 8.25rem;
     width: 8.25rem;
   `,
   Picture: styled.picture`
@@ -14,8 +14,8 @@ const Styles = {
     background-color: ${({ theme }) => theme.colors.night_rider};
     border-radius: 4px;
     overflow: hidden;
-    height: 8.25rem;
-    width: 8.25rem;
+    height: 100%;
+    width: 100%;
 
     &::after {
       content: "";

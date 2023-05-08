@@ -1,48 +1,18 @@
-import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/document";
-// PLUGINS
-import { ServerStyleSheet } from "styled-components";
+import { Html, Head, Main, NextScript } from "next/document";
 
-export default class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const sheet = new ServerStyleSheet();
-    const originalRenderPage = ctx.renderPage;
+export default function Document() {
+  return (
+    <Html lang="en">
+      <Head>
+        <link href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico" rel="shortcut icon" />
+        <link href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png" rel="apple-touch-icon" />
+        <link href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" rel="stylesheet" />
+      </Head>
 
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
-        });
-
-      const initialProps = await Document.getInitialProps(ctx);
-
-      return {
-        ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-            {sheet.getStyleElement()}
-          </>
-        ),
-      };
-    } finally {
-      sheet.seal();
-    }
-  }
-
-  render() {
-    return (
-      <Html lang="en">
-        <Head>
-          <link href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico" rel="shortcut icon" />
-          <link href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png" rel="apple-touch-icon" />
-          <link href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" rel="stylesheet" />
-        </Head>
-
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
 }

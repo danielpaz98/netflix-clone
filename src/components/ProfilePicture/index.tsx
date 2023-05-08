@@ -5,28 +5,29 @@ import Styles from "./styles.css";
 // IMAGES
 import DefaultImage from "~/images/png/default-blue.png";
 
-type Props = {
+interface Props extends React.ComponentProps<"figure"> {
   className?: string;
-  image?: string | null | StaticImageData;
-  username: string | null | undefined;
-};
+  image: string | null | undefined | StaticImageData;
+  username?: string | null | undefined;
+}
 
-const ProfilePicture = ({ className, image, username }: Props) => {
+const ProfilePicture = ({ className, image, username, ...restProps }: Props) => {
   return (
-    <Styles.Figure className={className}>
+    <Styles.Figure className={className} {...restProps}>
       <Styles.Picture>
         <Image
           fill
           priority
-          alt={username as string}
+          alt={(username as string) || ""}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           src={image || DefaultImage}
           style={{ objectFit: "cover", objectPosition: "center" }}
         />
       </Styles.Picture>
 
-      <Styles.Text>{username}</Styles.Text>
+      {username && <Styles.Text>{username}</Styles.Text>}
     </Styles.Figure>
   );
 };
+
 export default ProfilePicture;

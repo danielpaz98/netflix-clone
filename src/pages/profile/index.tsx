@@ -11,7 +11,7 @@ type Props = {
   user: User;
 };
 
-const ProfilePage: NextPageWithLayout<Props> = ({ user }: Props) => {
+const ProfilePage: NextPageWithLayout<Props> = ({ user }) => {
   return (
     <>
       <Styles.ShadedGradient />

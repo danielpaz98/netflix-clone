@@ -1,7 +1,7 @@
 import Head from "next/head";
 // PLUGINS
 import { SessionProvider } from "next-auth/react";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "@emotion/react";
 // THEME
 import { theme } from "~/theme";
 // STYLES

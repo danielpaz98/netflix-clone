@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 // PLUGINS
 import Link from "next/link";
 // IMAGES

@@ -9,7 +9,7 @@ const nextConfig = {
       ? ["(?<!(css).*)tsx?"] // all ts + tsx pages except when `(css)` is in the path
       : ["tsx?"], // all ts + tsx pages
   compiler: {
-    styledComponents: true,
+    emotion: true,
   },
   images: {
     domains: ["avatars.githubusercontent.com"],
