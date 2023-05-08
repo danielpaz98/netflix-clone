@@ -1,9 +1,7 @@
 // STYLES
 import Styles from "./styles.css";
 
-export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children?: React.ReactNode;
-}
+type Props = React.ComponentProps<"button">;
 
 const ProviderListItem = ({ className, children, ...restProps }: Props) => {
   return (
