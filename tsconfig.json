@@ -21,7 +21,8 @@
       "~/icons/*": ["./src/assets/icons/*"],
       "~/images/*": ["./src/assets/images/*"]
     },
-    "incremental": true
+    "incremental": true,
+    "types": ["@emotion/react/types/css-prop"]
   },
   "include": ["src", "types", "*.d.ts"],
   "exclude": ["node_modules"]
