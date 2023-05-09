@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 
 const Styles = {
   Figure: styled.figure`
-    display: block;
+    display: inline-block;
     margin: 0;
     max-width: 12.5rem;
     height: 8.25rem;
