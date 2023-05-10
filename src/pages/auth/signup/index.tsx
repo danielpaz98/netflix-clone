@@ -51,7 +51,7 @@ const SignUpPage: NextPageWithLayout = () => {
           />
 
           <AuthForm.Button disabled={isLoading} type="submit">
-            {isLoading ? <ThreeDotsIcon height={14} /> : <span>Register</span>}
+            {isLoading ? <ThreeDotsIcon height={14} style={{ display: "inline" }} /> : <span>Register</span>}
           </AuthForm.Button>
 
           <Styles.MutedLink>
