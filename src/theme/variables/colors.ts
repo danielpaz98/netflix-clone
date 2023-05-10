@@ -6,6 +6,7 @@ export const colors = {
   nero: "#141414",
   black_russian: "#18181b",
   charcoal: "#454545",
+  gray_70: "#b3b3b3",
   night_rider: "#333333",
   dim_gray: "#737373",
   mischka: "#9ca3af",
@@ -13,4 +14,4 @@ export const colors = {
   warning: "#e87c03",
   error: "#b92d2b",
   success: "#5fa53f",
-};
+} as const;

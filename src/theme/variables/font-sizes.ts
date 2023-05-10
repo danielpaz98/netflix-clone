@@ -12,4 +12,4 @@ export const fontSize = {
   "7xl": "4.5rem;",
   "8xl": "6rem",
   "9xl": "8rem",
-};
+} as const;
