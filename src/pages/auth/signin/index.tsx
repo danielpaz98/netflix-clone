@@ -53,7 +53,7 @@ const SignInPage: NextPageWithLayout = () => {
           />
 
           <AuthForm.Button disabled={isLoading} type="submit">
-            {isLoading ? <ThreeDotsIcon height={14} style={{ display: "inline" }} /> : <span>Login</span>}
+            {isLoading ? <ThreeDotsIcon css={{ display: "inline" }} height={14} /> : <span>Login</span>}
           </AuthForm.Button>
 
           <AuthForm.ProviderList>
