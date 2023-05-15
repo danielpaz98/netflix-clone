@@ -54,6 +54,10 @@
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   font-family: "Netflix Sans";
   font-weight: 400;
