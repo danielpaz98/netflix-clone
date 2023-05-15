@@ -1,14 +1,25 @@
 // STYLES
 import Styles from "./styles.css";
+// COMPONENTS
+import Navbar from "~/components/Navbar";
+// TYPES
+import type { user as User } from "@prisma/client";
 
-const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
+type Props = {
+  children: React.ReactNode;
+  user: User;
+};
+
+export const DefaultLayout = ({ user, children }: Props) => {
   return (
     <Styles.Container>
-      <Styles.Main>{children}</Styles.Main>
+      <Navbar user={user} />
+
+      <main>{children}</main>
     </Styles.Container>
   );
 };
 
-const Layout = (page: React.ReactElement) => <DefaultLayout>{page}</DefaultLayout>;
+const Layout = (page: React.ReactElement) => <DefaultLayout {...page.props}>{page}</DefaultLayout>;
 
 export default Layout;
