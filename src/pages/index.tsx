@@ -1,27 +1,21 @@
-import { signOut } from "next-auth/react";
 // LAYOUTS
 import { DefaultLayout } from "~/layouts";
 // LIBRARIES
 import { withAuth } from "~/lib";
 
 const HomePage: NextPageWithLayout = () => {
-  return (
-    <>
-      <h1>Netflix Clone</h1>
-      <button type="button" onClick={() => signOut()}>
-        Logout
-      </button>
-    </>
-  );
+  return <h1 css={{ margin: 0 }}>Netflix Clone</h1>;
 };
 
-export const getServerSideProps = withAuth(() => {
+export const getServerSideProps = withAuth((_, session) => {
   return {
-    props: {},
+    props: {
+      user: session?.user,
+    },
   };
 });
 
-HomePage.title = "Inicio";
+HomePage.title = "Home - Netflix";
 HomePage.layout = DefaultLayout;
 
 export default HomePage;
