@@ -3,6 +3,13 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcrypt";
 // LIBRARIES
 import { prismadb } from "~/lib/server";
+// IMAGES
+const images = [
+  import("~/images/png/default-blue.png"),
+  import("~/images/png/default-red.png"),
+  import("~/images/png/default-green.png"),
+  import("~/images/png/default-slate.png"),
+];
 
 type RequestBody = { email: string; name: string; password: string };
 
@@ -17,13 +24,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (existingUser) return res.status(422).json({ message: "Email taken" });
 
     const hashedPassword = await bcrypt.hash(password, 12);
+    const { src: image } = (await images[Math.floor(Math.random() * 4)]).default;
 
     const user = await prismadb.user.create({
       data: {
         email,
         name,
         hashedPassword,
-        image: "",
+        image,
         emailVerified: new Date(),
       },
     });

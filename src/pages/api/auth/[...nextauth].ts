@@ -9,8 +9,6 @@ import { compare } from "bcrypt";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 // LIBRARIES
 import { prismadb } from "~/lib/server";
-// IMAGES
-import DefaultImage from "~/images/png/default-blue.png";
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -67,7 +65,7 @@ export const authOptions: AuthOptions = {
     },
     session({ session, token }) {
       session.user = token.user as Session["user"];
-      session.user.image = (token.picture as Session["user"]["image"]) || DefaultImage.src;
+      session.user.image = token.picture as Session["user"]["image"];
 
       return session;
     },
