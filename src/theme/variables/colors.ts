@@ -1,5 +1,6 @@
 export const colors = {
   brand: "#e50914",
+  venetian_red: "#b9090b",
   white: "#ffffff",
   whisper: "#e5e5e5",
   black: "#000000",
@@ -7,6 +8,7 @@ export const colors = {
   black_russian: "#18181b",
   charcoal: "#454545",
   gray_70: "#b3b3b3",
+  gray_80: "#cccccc",
   night_rider: "#333333",
   dim_gray: "#737373",
   mischka: "#9ca3af",
