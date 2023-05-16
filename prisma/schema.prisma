@@ -61,7 +61,7 @@ model verification_token {
 model movie {
   id           String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   title        String
-  descriptin   String
+  description  String
   videoUrl     String
   thumbnailUrl String
   genre        String
