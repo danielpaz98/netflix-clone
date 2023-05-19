@@ -16,6 +16,7 @@ const Input = forwardRef(
     return (
       <Styles.Container className={className}>
         <Styles.Input
+          {...restProps}
           ref={ref}
           floatLabel={floatLabel}
           id={name}
@@ -23,7 +24,6 @@ const Input = forwardRef(
           placeholder={placeholder ?? " "}
           type={type}
           onChange={onChange}
-          {...restProps}
         />
 
         {label && (

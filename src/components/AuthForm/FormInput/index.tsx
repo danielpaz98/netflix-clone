@@ -6,8 +6,8 @@ import Styles from "./styles.css";
 // COMPONENTS
 import FeedbackMessage from "~/components/FeedbackMessage";
 // TYPES
-import type { Props as InputProps } from "~/components/Input";
 import type { FeedbackType } from "~/components/FeedbackMessage";
+import type { Props as InputProps } from "~/components/Input";
 
 export interface Props extends InputProps {
   feedbackType?: FeedbackType | undefined;
@@ -26,13 +26,13 @@ const FormInput = forwardRef(
     return (
       <Styles.FormInputContainer className={className}>
         <Styles.FormInput
+          {...restProps}
           ref={ref}
           disabled={isSubmitting || disabled}
           feedbackType={feedbackType}
           label={label}
           type={type}
           {...(name && { ...register(name) })}
-          {...restProps}
         />
 
         {errors?.[name as string] && (

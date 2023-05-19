@@ -6,7 +6,7 @@ type Props = React.ComponentProps<"button">;
 const ProviderListItem = ({ className, children, ...restProps }: Props) => {
   return (
     <Styles.ProviderListItem className={className}>
-      <button type="button" {...restProps}>
+      <button {...restProps} type="button">
         {children}
       </button>
     </Styles.ProviderListItem>

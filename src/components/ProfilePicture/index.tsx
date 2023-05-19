@@ -11,7 +11,7 @@ interface Props extends React.ComponentProps<"figure"> {
 
 const ProfilePicture = ({ className, image, username, ...restProps }: Props) => {
   return (
-    <Styles.Figure className={className} {...restProps}>
+    <Styles.Figure {...restProps} className={className}>
       <Styles.Picture onlyPicture={Boolean(username)}>
         {image && (
           <Image
