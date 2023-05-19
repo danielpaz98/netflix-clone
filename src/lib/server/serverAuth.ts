@@ -5,11 +5,15 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "~/pages/api/auth/[...nextauth]";
 
 async function serverAuth(req: NextApiRequest, res: NextApiResponse) {
-  const { user: currentUser } = (await getServerSession(req, res, authOptions)) || {};
+  try {
+    const { user: currentUser } = (await getServerSession(req, res, authOptions)) || {};
 
-  if (!currentUser?.email) throw new Error("Not signed in");
+    if (!currentUser?.email) return res.status(401).send("Not signed in");
 
-  return { currentUser };
+    return { currentUser };
+  } catch (err) {
+    return res.status(500).end();
+  }
 }
 
 export default serverAuth;
