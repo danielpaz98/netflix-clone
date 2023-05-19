@@ -4,7 +4,7 @@ import axios, { type AxiosError } from "axios";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 // TYPES
-import type { user as User } from "@prisma/client";
+import type { User } from "@prisma/client";
 import type { FieldValues, ErrorOption, FieldPath } from "react-hook-form";
 import type { SignInSchema, SignUpSchema } from "~/components/AuthForm/schemas";
 

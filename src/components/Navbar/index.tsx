@@ -17,7 +17,7 @@ import { useScrollPosition } from "~/hooks";
 // FAKE DATA
 import { navMenu, notificationMenu, accountMenu } from "./Dropdowns/data";
 // TYPES
-import type { user as User } from "@prisma/client";
+import type { User } from "@prisma/client";
 
 type Props = {
   user: User;

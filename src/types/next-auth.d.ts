@@ -1,7 +1,7 @@
 // TYPES
-import type { user } from "@prisma/client";
+import type { User as TUser } from "@prisma/client";
 
-type User = Omit<user, "createAt" | "updatedAt" | "emailVerified" | "hashedPassword">;
+type User = Omit<TUser, "createAt" | "updatedAt" | "emailVerified" | "hashedPassword">;
 
 declare module "next-auth" {
   interface Session {

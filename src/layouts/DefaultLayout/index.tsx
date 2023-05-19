@@ -3,7 +3,7 @@ import Styles from "./styles.css";
 // COMPONENTS
 import Navbar from "~/components/Navbar";
 // TYPES
-import type { user as User } from "@prisma/client";
+import type { User } from "@prisma/client";
 
 type Props = {
   children: React.ReactNode;

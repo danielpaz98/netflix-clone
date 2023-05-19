@@ -5,7 +5,7 @@ import Styles from "./styles.css";
 // IMAGES
 import ProfilePicture from "~/components/ProfilePicture";
 // TYPES
-import type { user as User } from "@prisma/client";
+import type { User } from "@prisma/client";
 
 type Props = {
   user: User;

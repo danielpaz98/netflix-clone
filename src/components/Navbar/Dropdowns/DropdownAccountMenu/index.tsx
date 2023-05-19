@@ -8,7 +8,7 @@ import AccountMenu from "~/components/Navbar/AccountMenu";
 // THEME VARIABLES
 import { colors } from "~/theme/variables";
 // TYPES
-import type { user as User } from "@prisma/client";
+import type { User } from "@prisma/client";
 import type { TAccountMenu } from "~/components/Navbar/Dropdowns/data";
 
 interface Props extends React.ComponentProps<"div"> {
