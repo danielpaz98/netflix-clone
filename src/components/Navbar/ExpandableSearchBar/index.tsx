@@ -4,7 +4,7 @@ import Styles from "./styles.css";
 // ICONS
 import XMarkIcon from "~/icons/xmark.svg";
 
-type ExcludedProps = "type" | "autoFocus";
+type ExcludedProps = "ref" | "type" | "autoFocus";
 type Props = Omit<React.ComponentProps<"input">, ExcludedProps>;
 
 const ExpandableSearchBar = ({ className, value = "", onChange, ...restProps }: Props) => {
@@ -49,8 +49,8 @@ const ExpandableSearchBar = ({ className, value = "", onChange, ...restProps }: 
           <Styles.SearchIcon className="pointer-events-none" css={{ margin: "0 6px" }} />
 
           <Styles.Input
-            ref={inputRef}
             {...restProps}
+            ref={inputRef}
             autoFocus
             type="text"
             value={search}
