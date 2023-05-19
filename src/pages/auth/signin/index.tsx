@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 // PLUGINS
+import { getSession, signIn } from "next-auth/react";
 import Link from "next/link";
-import { signIn, getSession } from "next-auth/react";
 // STYLES
 import Styles from "~/components/AuthForm/styles.css";
 // LAYOUTS
@@ -9,12 +9,12 @@ import { AuthLayout } from "~/layouts";
 // COMPONENTS
 import AuthForm from "~/components/AuthForm";
 // ICONS
-import GoogleIcon from "~/icons/google.svg";
 import GithubIcon from "~/icons/github.svg";
+import GoogleIcon from "~/icons/google.svg";
 import ThreeDotsIcon from "~/icons/three-dots.svg";
 // TYPES
-import type { UseFormReturn } from "react-hook-form";
 import type { GetServerSidePropsContext } from "next";
+import type { UseFormReturn } from "react-hook-form";
 // SCHEMAS
 import { signInSchema, type SignInSchema } from "~/components/AuthForm/schemas";
 // HOOKS

@@ -1,21 +1,21 @@
 // PLUGINS
-import Link from "next/link";
 import clsx from "clsx";
+import Link from "next/link";
 import { useRouter } from "next/router";
 // STYLES
 import Styles from "./styles.css";
 // COMPONENTS
-import NavbarMenu from "~/components/Navbar/NavbarMenu";
-import ExpandableSearchBar from "~/components/Navbar/ExpandableSearchBar";
 import {
+  DropdownAccountMenu,
   DropdownMobileMenu,
   DropdownNotificationsMenu,
-  DropdownAccountMenu,
 } from "~/components/Navbar/Dropdowns";
+import ExpandableSearchBar from "~/components/Navbar/ExpandableSearchBar";
+import NavbarMenu from "~/components/Navbar/NavbarMenu";
 // HOOKS
 import { useScrollPosition } from "~/hooks";
 // FAKE DATA
-import { navMenu, notificationMenu, accountMenu } from "./Dropdowns/data";
+import { accountMenu, navMenu, notificationMenu } from "./Dropdowns/data";
 // TYPES
 import type { User } from "@prisma/client";
 
