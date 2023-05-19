@@ -2,7 +2,7 @@
   "eslint.enable": true,
   "editor.formatOnSave": true,
   "eslint.format.enable": true,
-  "editor.codeActionsOnSave": ["source.fixAll.eslint", "source.sortMembers"],
+  "editor.codeActionsOnSave": ["source.fixAll.eslint", "source.sortMembers", "source.organizeImports"],
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
