@@ -4,6 +4,8 @@ import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@emotion/react";
 // THEME
 import { theme } from "~/theme";
+// TYPES
+import type { Session } from "next-auth";
 // STYLES
 import "~/global.css";
 
@@ -17,7 +19,9 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
         <title>{pageTitle}</title>
       </Head>
 
-      <SessionProvider session={session}>{getLayout(<Component {...pageProps} />)}</SessionProvider>
+      <SessionProvider session={session as Session}>
+        {getLayout(<Component {...pageProps} />)}
+      </SessionProvider>
     </ThemeProvider>
   );
 }
