@@ -2,15 +2,34 @@
 import { DefaultLayout } from "~/layouts";
 // LIBRARIES
 import { withAuth } from "~/lib";
+// COMPONENTS
+import Billboard from "~/components/Billboard";
+// SERVICES
+import { getBillboard } from "~/services";
+// TYPES
+import type { Movie, User } from "@prisma/client";
 
-const HomePage: NextPageWithLayout = () => {
-  return <h1 css={{ margin: 0 }}>Netflix Clone</h1>;
+type Props = {
+  user: User;
+  billboard: Movie;
 };
 
-export const getServerSideProps = withAuth((_, session) => {
+const HomePage: NextPageWithLayout<Props> = ({ billboard }) => {
+  return (
+    <>
+      <Billboard billboard={billboard} />
+      <h1>asodokasdkoas</h1>
+    </>
+  );
+};
+
+export const getServerSideProps = withAuth(async ({ req }, session) => {
+  const billboard = await getBillboard(req);
+
   return {
     props: {
       user: session?.user,
+      billboard,
     },
   };
 });
