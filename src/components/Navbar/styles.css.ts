@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 // PLUGINS
 import Link from "next/link";
 // THEME VARIABLES
@@ -7,14 +7,17 @@ import { breakpoints } from "~/theme/variables";
 // IMAGES
 import NetflixLogo from "~/images/svg/logo.svg";
 
+export const headerHeight = "4.375rem";
 const offsetTop = 66;
 
 const Styles = {
   Header: styled.header<{ scrollY?: number }>`
+    --header-height: 4.375rem;
     position: sticky;
     top: 0;
     z-index: 1;
-    height: 4.25rem;
+    height: ${headerHeight};
+    width: 100%;
     padding: 0 4%;
     background-color: ${({ scrollY, theme }) =>
       (scrollY as number) >= offsetTop ? theme.colors.nero : "transparent"};
