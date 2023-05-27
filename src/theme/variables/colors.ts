@@ -11,6 +11,7 @@ export const colors = {
   gray_80: "#cccccc",
   night_rider: "#333333",
   dim_gray: "#737373",
+  dove_gray: "#6d6d6d",
   mischka: "#9ca3af",
   suva_gray: "#8c8c8c",
   warning: "#e87c03",
