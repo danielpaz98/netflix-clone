@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-// LIBRARIES
+// PLUGINS
 import { getServerSession } from "next-auth";
 // CONSTANTS
 import { authOptions } from "~/pages/api/auth/[...nextauth]";

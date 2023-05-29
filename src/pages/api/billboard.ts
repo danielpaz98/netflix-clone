@@ -1,12 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 // LIBRARIES
-import { serverAuth, prismadb } from "~/lib/server";
+import { prismadb, serverAuth } from "~/lib/server";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    if (req.method !== "GET") {
-      return res.status(405).end();
-    }
+    if (req.method !== "GET") return res.status(405).end();
 
     await serverAuth(req, res);
 
