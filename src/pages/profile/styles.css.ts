@@ -10,7 +10,7 @@ const Styles = {
     background-image: ${({ theme }) => theme.gradients.shaded[200]};
   `,
   Main: styled.main`
-    background-color: ${({ theme }) => theme.colors.nero};
+    background-color: ${({ theme }) => theme.colors.chinese_black};
     bottom: 0;
     left: 0;
     position: fixed;
