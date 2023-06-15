@@ -1,12 +1,13 @@
 import { useState } from "react";
 // PLUGINS
-import Link from "next/link";
 import { signOut } from "next-auth/react";
+import Link from "next/link";
+// COMPONENTS
+import AccountMenu from "~/components/Navbar/AccountMenu";
 // STYLES
 import Styles from "./styles.css";
-import AccountMenu from "~/components/Navbar/AccountMenu";
 // THEME VARIABLES
-import { colors } from "~/theme/variables";
+import { colors } from "~/styles/variables";
 // TYPES
 import type { User } from "@prisma/client";
 import type { TAccountMenu } from "~/components/Navbar/Dropdowns/data";
