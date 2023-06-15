@@ -34,7 +34,12 @@ function Button({ children, startIcon, endIcon, color, rounded, ...restProps }: 
   const Component = (restProps.href ? Styles.Link : Styles.Button) as StyledComponent<StyledButtonProps>;
 
   return (
-    <Component {...restProps} color={color} hasIcon={hasIcon} iconPosition={iconPosition} rounded={rounded}>
+    <Component
+      {...restProps}
+      colorName={color}
+      hasIcon={hasIcon}
+      iconPosition={iconPosition}
+      rounded={rounded}>
       {startIcon && <Styles.Icon>{startIcon}</Styles.Icon>}
       {children}
       {endIcon && <Styles.Icon>{endIcon}</Styles.Icon>}

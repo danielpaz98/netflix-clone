@@ -12,7 +12,7 @@ import { IconPosition, type Props as TProps } from "./index";
 export type Props = TProps & {
   hasIcon?: boolean;
   iconPosition?: keyof typeof IconPosition;
-  color?: keyof typeof variantColor;
+  colorName?: keyof typeof variantColor;
 };
 
 export const variantColor = {
@@ -35,7 +35,7 @@ export const variantColor = {
 
 export const buttonStyles = ({
   theme,
-  color,
+  colorName: color,
   iconPosition,
   hasIcon,
   rounded,
