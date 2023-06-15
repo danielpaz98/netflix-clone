@@ -2,16 +2,13 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 // PLUGINS
 import Link from "next/link";
-// THEME VARIABLES
-import { breakpoints } from "~/theme/variables";
 // IMAGES
 import NetflixLogo from "~/images/svg/logo.svg";
 
 export const headerHeight = "4.375rem";
-const offsetTop = 66;
 
 const Styles = {
-  Header: styled.header<{ scrollY?: number }>`
+  Header: styled.header<{ changeBgColor?: boolean }>`
     --header-height: 4.375rem;
     position: sticky;
     top: 0;
@@ -19,8 +16,8 @@ const Styles = {
     height: ${headerHeight};
     width: 100%;
     padding: 0 4%;
-    background-color: ${({ scrollY, theme }) =>
-      (scrollY as number) >= offsetTop ? theme.colors.nero : "transparent"};
+    background-color: ${({ changeBgColor, theme }) =>
+      changeBgColor ? theme.colors.chinese_black : "transparent"};
     background-image: ${({ theme }) => theme.gradients.shaded[200]};
     transition: background-color 0.4s;
 
@@ -31,6 +28,10 @@ const Styles = {
   HeaderLink: styled(Link)`
     color: ${({ theme }) => theme.colors.brand};
     margin-right: 1.5625rem;
+
+    @media screen and (max-width: 1150px) {
+      margin-right: 0.3125rem;
+    }
   `,
   HeaderLogo: styled(NetflixLogo)`
     display: block;
@@ -61,7 +62,7 @@ const Styles = {
       display: none;
     }
 
-    @media screen and (min-width: calc(${breakpoints.md} + 32px)) {
+    @media screen and (min-width: 1000px) {
       & > li:first-of-type {
         display: none;
       }
@@ -72,7 +73,7 @@ const Styles = {
     }
 
     & > li {
-      font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+      font-size: clamp(0.5625rem, 1.025vw, 0.875rem);
     }
   `,
   SearchItem: css`

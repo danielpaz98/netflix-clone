@@ -2,6 +2,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useMemo } from "react";
 // STYLES
 import Styles from "./styles.css";
 // COMPONENTS
@@ -14,7 +15,7 @@ import ExpandableSearchBar from "~/components/Navbar/ExpandableSearchBar";
 import NavbarMenu from "~/components/Navbar/NavbarMenu";
 // HOOKS
 import { useScrollPosition } from "~/hooks";
-// FAKE DATA
+// DATA
 import { accountMenu, navMenu, notificationMenu } from "./Dropdowns/data";
 // TYPES
 import type { User } from "@prisma/client";
@@ -23,12 +24,15 @@ type Props = {
   user: User;
 };
 
+const offsetTop = 66;
+
 const Navbar = ({ user }: Props) => {
   const router = useRouter();
-  const { y } = useScrollPosition();
+  const { y: scrollY } = useScrollPosition();
+  const changeBgColor = useMemo(() => scrollY >= offsetTop, [scrollY]);
 
   return (
-    <Styles.Header scrollY={y}>
+    <Styles.Header changeBgColor={changeBgColor}>
       <Styles.Nav>
         <Styles.HeaderLink href="/">
           <Styles.HeaderLogo className="pointer-events-none" />
