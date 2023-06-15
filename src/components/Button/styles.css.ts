@@ -4,63 +4,70 @@ import styled from "@emotion/styled";
 // PLUGINS
 import NextLink from "next/link";
 // THEME VARIABLES
-import { colors } from "~/theme/variables";
+import { colors } from "~/styles/variables";
 // TYPES
-import type { DefaultTheme } from "~/theme";
+import type { DefaultTheme } from "~/styles";
 import { IconPosition, type Props as TProps } from "./index";
 
 export type Props = TProps & {
   hasIcon?: boolean;
   iconPosition?: keyof typeof IconPosition;
+  color?: keyof typeof variantColor;
 };
 
-const colors2 = {
+export const variantColor = {
   primary: {
-    color: colors.white,
-    textColor: colors.black,
-    hoverColor: `${colors.white}bf`,
+    color: colors.black,
+    bg_color: colors.white,
+    hover_color: `${colors.white}bf`,
   },
   secondary: {
-    color: `${colors.dove_gray}b3`,
-    textColor: colors.white,
-    hoverColor: `${colors.dove_gray}66`,
+    color: colors.white,
+    bg_color: `${colors.dove_gray}b3`,
+    hover_color: `${colors.dove_gray}66`,
   },
 } as const;
 
 export const buttonStyles = ({ theme, color, iconPosition, hasIcon }: Props & { theme: DefaultTheme }) =>
   css`
-    display: block;
-    border-radius: 0.25rem;
     padding: 0.5rem;
-    padding-left: 1.25rem;
-    padding-right: 1.5rem;
+    border-radius: 0.25rem;
     word-break: break-word;
     white-space: nowrap;
-    color: ${color ? colors2[color].textColor : theme.colors.white};
-    background-color: ${color ? colors2[color]?.color : theme.colors.charcoal};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: 500;
     white-space: pre-wrap;
 
-    &:not(:disabled):hover {
-      background-color: ${color ? colors2[color].hoverColor : `${theme.colors.charcoal}bf`};
-    }
+    ${color &&
+    css`
+      color: ${variantColor[color].color ?? theme.colors.white};
+      background-color: ${variantColor[color].bg_color ?? theme.colors.charcoal};
+
+      &:not(:disabled):hover {
+        background-color: ${variantColor[color].hover_color ?? `${theme.colors.charcoal}bf`};
+      }
+    `};
 
     ${iconPosition === IconPosition.right &&
     css`
       padding-left: 1.5rem;
       padding-right: 1.25rem;
-    `}
+    `};
+
+    ${iconPosition === IconPosition.left &&
+    css`
+      padding-left: 1.25rem;
+      padding-right: 1.5rem;
+    `};
 
     ${hasIcon &&
     css`
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 0.625rem;
-    `}
+    `};
   `;
-
 const Styles = {
   Button: styled.button<Props>`
     ${buttonStyles}
@@ -72,12 +79,9 @@ const Styles = {
   `,
   Icon: styled.span`
     display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
     flex-shrink: 0;
-
-    & > *:nth-of-type(1) {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
   `,
 };
 

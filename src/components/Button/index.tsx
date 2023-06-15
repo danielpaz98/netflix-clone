@@ -1,7 +1,7 @@
 // STYLES
-import type { StyledComponent } from "@emotion/styled";
-import Styles, { type Props as StyledButtonProps } from "./styles.css";
+import Styles, { variantColor, type Props as StyledButtonProps } from "./styles.css";
 // TYPES
+import type { StyledComponent } from "@emotion/styled";
 import type { LinkProps } from "next/link";
 
 export enum IconPosition {
@@ -9,15 +9,10 @@ export enum IconPosition {
   right = "right",
 }
 
-export enum ButtonColors {
-  primary = "primary",
-  secondary = "secondary",
-}
-
 interface CommonProps {
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
-  color?: keyof typeof ButtonColors;
+  color?: keyof typeof variantColor;
 }
 
 export interface ButtonProps extends Omit<React.ComponentProps<"button">, "color">, CommonProps {
