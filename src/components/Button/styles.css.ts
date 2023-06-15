@@ -28,7 +28,13 @@ export const variantColor = {
   },
 } as const;
 
-export const buttonStyles = ({ theme, color, iconPosition, hasIcon }: Props & { theme: DefaultTheme }) =>
+export const buttonStyles = ({
+  theme,
+  color,
+  iconPosition,
+  hasIcon,
+  rounded,
+}: Props & { theme: DefaultTheme }) =>
   css`
     padding: 0.5rem;
     border-radius: 0.25rem;
@@ -49,13 +55,20 @@ export const buttonStyles = ({ theme, color, iconPosition, hasIcon }: Props & { 
       }
     `};
 
-    ${iconPosition === IconPosition.right &&
+    ${rounded &&
+    css`
+      border-radius: 50%;
+    `};
+
+    ${!rounded &&
+    iconPosition === IconPosition.right &&
     css`
       padding-left: 1.5rem;
       padding-right: 1.25rem;
     `};
 
-    ${iconPosition === IconPosition.left &&
+    ${!rounded &&
+    iconPosition === IconPosition.left &&
     css`
       padding-left: 1.25rem;
       padding-right: 1.5rem;

@@ -10,10 +10,7 @@ const Styles = {
     ${({ flatButton }) =>
       !flatButton &&
       css`
-        padding: 0.5rem;
-        border-radius: 50%;
-
-        & > span > *:nth-of-type(1) {
+        & > span:first-of-type {
           width: 2.35rem;
           height: 2.35rem;
         }

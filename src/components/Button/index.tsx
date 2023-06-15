@@ -13,6 +13,7 @@ interface CommonProps {
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   color?: keyof typeof variantColor;
+  rounded?: boolean;
 }
 
 export interface ButtonProps extends Omit<React.ComponentProps<"button">, "color">, CommonProps {
@@ -27,13 +28,13 @@ export interface ButtonLinkProps extends LinkProps, CommonProps {
 
 export type Props = ButtonProps | ButtonLinkProps;
 
-function Button({ children, startIcon, endIcon, color, ...restProps }: Props) {
+function Button({ children, startIcon, endIcon, color, rounded, ...restProps }: Props) {
   const hasIcon = Boolean(startIcon) || Boolean(endIcon);
   const iconPosition = (startIcon && IconPosition.left) || (endIcon && IconPosition.right) || undefined;
   const Component = (restProps.href ? Styles.Link : Styles.Button) as StyledComponent<StyledButtonProps>;
 
   return (
-    <Component {...restProps} color={color} hasIcon={hasIcon} iconPosition={iconPosition}>
+    <Component {...restProps} color={color} hasIcon={hasIcon} iconPosition={iconPosition} rounded={rounded}>
       {startIcon && <Styles.Icon>{startIcon}</Styles.Icon>}
       {children}
       {endIcon && <Styles.Icon>{endIcon}</Styles.Icon>}

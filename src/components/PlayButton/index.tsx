@@ -1,17 +1,27 @@
 // STYLES
 import Styles from "./styles.css";
 // COMPONENTS
-import { Props as ButtonProps } from "~/components/Button";
+import type { Props as ButtonProps } from "~/components/Button";
+// TYPES
+import type { StyledComponent } from "@emotion/styled";
 // ICONS
 import PlayIcon from "~/icons/play.svg";
 
-export type Props = ButtonProps & {
+type ExcludedProps = "startIcon" | "endIcon" | "rounded";
+
+export type Props = Omit<ButtonProps, ExcludedProps> & {
   flatButton?: boolean;
 };
 
-const PlayButton = ({ children, flatButton = true, ...restProps }: Props) => {
+const PlayButton = ({ children, flatButton, ...restProps }: Props) => {
+  const isRounded = { ...(!flatButton && { rounded: true }) };
+
   return (
-    <Styles.PlayButton {...restProps} flatButton={flatButton} startIcon={<PlayIcon />}>
+    <Styles.PlayButton
+      {...(restProps as StyledComponent<Props>)}
+      {...isRounded}
+      flatButton={flatButton}
+      startIcon={<PlayIcon />}>
       {flatButton && <>{children}</>}
     </Styles.PlayButton>
   );
