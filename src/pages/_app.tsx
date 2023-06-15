@@ -1,9 +1,9 @@
 import Head from "next/head";
 // PLUGINS
-import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@emotion/react";
+import { SessionProvider } from "next-auth/react";
 // THEME
-import { theme } from "~/theme";
+import { theme } from "~/styles";
 // TYPES
 import type { Session } from "next-auth";
 // STYLES
