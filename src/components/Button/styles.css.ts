@@ -26,6 +26,11 @@ export const variantColor = {
     bg_color: `${colors.dove_gray}b3`,
     hover_color: `${colors.dove_gray}66`,
   },
+  supplementary: {
+    color: colors.white,
+    bg_color: `${colors.mine_shaft}99`,
+    hover_color: colors.mine_shaft,
+  },
 } as const;
 
 export const buttonStyles = ({
