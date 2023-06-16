@@ -1,14 +1,14 @@
 import NextAuth, { type AuthOptions, type Session } from "next-auth";
+// PLUGINS
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { compare } from "bcrypt";
+import _omit from "just-omit";
+// LIBRARIES
+import { prismadb } from "~/lib/server";
 // PROVIDERS
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-// PLUGINS
-import omit from "just-omit";
-import { compare } from "bcrypt";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-// LIBRARIES
-import { prismadb } from "~/lib/server";
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -45,7 +45,7 @@ export const authOptions: AuthOptions = {
 
           if (!isValidPassword) throw new Error("Incorrect password");
 
-          const user = omit(dbUser, ["createAt", "updatedAt", "emailVerified", "hashedPassword"]);
+          const user = _omit(dbUser, ["createAt", "updatedAt", "emailVerified", "hashedPassword"]);
 
           return user;
         } catch (err) {
