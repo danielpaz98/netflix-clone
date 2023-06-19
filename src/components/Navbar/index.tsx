@@ -24,15 +24,12 @@ type Props = {
   user: User;
 };
 
-const offsetTop = 66;
-
 const Navbar = ({ user }: Props) => {
   const router = useRouter();
   const { y: scrollY } = useScrollPosition();
-  const changeBgColor = useMemo(() => scrollY >= offsetTop, [scrollY]);
 
   return (
-    <Styles.Header changeBgColor={changeBgColor}>
+    <Styles.Header scrollY={scrollY}>
       <Styles.Nav>
         <Styles.HeaderLink href="/">
           <Styles.HeaderLogo className="pointer-events-none" />

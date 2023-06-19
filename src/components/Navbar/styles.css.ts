@@ -5,10 +5,11 @@ import Link from "next/link";
 // IMAGES
 import NetflixLogo from "~/images/svg/logo.svg";
 
+const offsetTop = 66;
 export const headerHeight = "4.375rem";
 
 const Styles = {
-  Header: styled.header<{ changeBgColor?: boolean }>`
+  Header: styled.header<{ scrollY?: number }>`
     --header-height: 4.375rem;
     position: sticky;
     top: 0;
@@ -16,9 +17,9 @@ const Styles = {
     height: ${headerHeight};
     width: 100%;
     padding: 0 4%;
-    background-color: ${({ changeBgColor, theme }) =>
-      changeBgColor ? theme.colors.chinese_black : "transparent"};
     background-image: ${({ theme }) => theme.gradients.shaded[200]};
+    background-color: ${({ scrollY, theme }) =>
+      (scrollY as number) >= offsetTop ? theme.colors.chinese_black : "transparent"};
     transition: background-color 0.4s;
 
     @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) and (max-width: 950px) {
