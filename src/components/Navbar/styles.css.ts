@@ -5,12 +5,11 @@ import Link from "next/link";
 // IMAGES
 import NetflixLogo from "~/images/svg/logo.svg";
 
-const offsetTop = 66;
 export const headerHeight = "4.375rem";
+const offsetTop = 66;
 
 const Styles = {
   Header: styled.header<{ scrollY?: number }>`
-    --header-height: 4.375rem;
     position: sticky;
     top: 0;
     z-index: 1;
